@@ -6,7 +6,6 @@ def test_list(request):
     test_type = TestType.objects.all()
     tests = Test.objects.all()
 
-
     return render(request, 'tests_app/tests/list.html',
                   {'tests': tests,})
 
