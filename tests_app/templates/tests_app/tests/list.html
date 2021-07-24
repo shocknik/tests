@@ -10,14 +10,14 @@
             <li {% if not test_type %}class="selected"{% endif %}>
                 <a href="{% url "tests_app:test_list" %}">All</a>
             </li>
-            {% for type in type_test %}
+            {% for type in type_tests %}
                 <li {% if type_test.pk == type.pk %}class="selected"{% endif %}>
-                    <a href="{{ type.get_absolute_url }}"></a>
+                    <a href="{{ type.get_absolute_url }}">{{ type.name }}</a>
                 </li>
             {% endfor %}
         </ul>
     </div>
-    <div id="main" class="test_list">
+    <div id="main" class="f_list">
         <h1>{% if test_type %}{{ test_type.name }}{% else %}Test{% endif %}</h1>
         {% for test in tests %}
             <div class="item">
