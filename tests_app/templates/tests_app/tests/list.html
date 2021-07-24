@@ -1,31 +1,33 @@
 {% extends "tests_app/base.html" %}
 {% load static %}
 {% block title %}
-    {% if type_test %}{{ type_test.name }}{% else %}Test{% endif %}
+    {% if type_test %}{{ type_test.name }}{% else %}Главная страница{% endif %}
 {% endblock %}
 {% block content %}
-    <div id="sidebar">
-        <h3>TestType</h3>
-        <ul>
-            <li {% if not test_type %}class="selected"{% endif %}>
-                <a href="{% url "tests_app:test_list" %}">All</a>
-            </li>
-            {% for type in type_tests %}
-                <li {% if type_test.pk == type.pk %}class="selected"{% endif %}>
-                    <a href="{{ type.get_absolute_url }}">{{ type.name }}</a>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <div id="main" class="f_list">
-        <h1>{% if test_type %}{{ test_type.name }}{% else %}Test{% endif %}</h1>
-        {% for test in tests %}
-            <div class="item">
-                <a href="{{ test_app.get_absolute_url }}">
-                </a>
-                <a href="{{ test_app.get_absolute_url }}">{{ test.name }}</a><br>
-                ${{ test.price }}
+    <main class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h3>Категории испытаний</h3>
+                <ul>
+                    <li {% if not test_type %}class="selected"{% endif %}>
+                        <a href="{% url "tests_app:test_list" %}">Все испытания</a>
+                    </li>
+                    {% for type in type_tests %}
+                        <li {% if type_test.pk == type.pk %}class="search-label-icon"{% endif %}>
+                            <a href="{{ type.get_absolute_url }}">{{ type.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
-        {% endfor %}
+            <aside class="col-md-5">
+                <div class="bg-sucess p-3 mb-3 rounded">
+                    <h1>{% if test_type %}{{ test_type.name }}{% else %}Список испытаний{% endif %}</h1>
+                    {% for test in tests %}
+                        <li><a href="{{ test_app.get_absolute_url }}">{{ test.name }}</a> {{ test.price }} &#8381</li>
+                    {% endfor %}
+                </div>
+            </aside>
         </div>
-    {% endblock %}
+    </main>
+
+{% endblock %}
