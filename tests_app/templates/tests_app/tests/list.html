@@ -1,7 +1,7 @@
 {% extends "tests_app/base.html" %}
 {% load static %}
 {% block title %}
-    {% if test_type %}{{ test_type.name }}{% else %}Test{% endif %}
+    {% if type_test %}{{ type_test.name }}{% else %}Test{% endif %}
 {% endblock %}
 {% block content %}
     <div id="sidebar">
@@ -10,17 +10,22 @@
             <li {% if not test_type %}class="selected"{% endif %}>
                 <a href="{% url "tests_app:test_list" %}">All</a>
             </li>
+            {% for type in type_test %}
+                <li {% if type_test.pk == type.pk %}class="selected"{% endif %}>
+                    <a href="{{ type.get_absolute_url }}"></a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
     <div id="main" class="test_list">
         <h1>{% if test_type %}{{ test_type.name }}{% else %}Test{% endif %}</h1>
         {% for test in tests %}
-        <div class="item">
-            <a href="{{ test_app.get_absolute_url }}">
-            </a>
-            <a href="{{ test_app.get_absolute_url }}">{{ test.name }}</a><br>
-            ${{ test.price }}
-        </div>>
-            {% endfor %}
+            <div class="item">
+                <a href="{{ test_app.get_absolute_url }}">
+                </a>
+                <a href="{{ test_app.get_absolute_url }}">{{ test.name }}</a><br>
+                ${{ test.price }}
+            </div>
+        {% endfor %}
         </div>
     {% endblock %}

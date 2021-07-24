@@ -3,7 +3,7 @@ from .models import Test, TestType
 
 
 class TypeTestAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['pk', 'name']
 
 admin.site.register(TestType, TypeTestAdmin)
 

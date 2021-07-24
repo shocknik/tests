@@ -13,7 +13,7 @@ class TestType(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('tests_app:test_list', kwargs={'id': self.id})
+        return reverse('tests_app:test_list', kwargs={'pk': self.pk})
 
 class Test(models.Model):
     type_test = models.ForeignKey(TestType, related_name='tests_app', on_delete=models.CASCADE)
@@ -30,6 +30,4 @@ class Test(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('tests_app:test_list', kwargs={'id': self.id})
-
-
+        return reverse('tests_app:test_list', kwargs={'pk': self.pk})

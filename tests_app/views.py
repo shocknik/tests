@@ -3,11 +3,14 @@ from django.shortcuts import render
 from .models import Test, TestType
 
 def test_list(request):
-    test_type = TestType.objects.all()
+    type_test = TestType.objects.all().order_by('pk')
     tests = Test.objects.all()
 
     return render(request, 'tests_app/tests/list.html',
-                  {'tests': tests,})
+                  {'tests': tests,
+                   'type_test': type_test,
+
+                   })
 
 
 # Create your views here.
