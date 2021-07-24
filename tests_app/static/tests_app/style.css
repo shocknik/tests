@@ -21,7 +21,7 @@ footer a:hover {
 
 
 .alert-light {
-    border-color: #bfbfgf
+    border-color: #bfbfbf
 }
 
 .user_image {
@@ -35,7 +35,7 @@ footer a:hover {
 }
 
 .form-section {
-    background: #fgf;
+    background: #f0f8ff;
     padding: 20px;
     border: 1px solid silver;
     box-sizing: border-box;
