@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Test, TestType
 
 def f_list(request):
@@ -15,4 +15,9 @@ def f_list(request):
                    })
 
 
-# Create your views here.
+def test_detail(request, pk):
+    test = get_object_or_404(Test,
+                             pk=pk)
+    return render(request,
+                  'tests_app/tests/test_detail.html',
+                  {'test': test})

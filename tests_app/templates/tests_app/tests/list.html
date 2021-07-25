@@ -13,17 +13,17 @@
                         <a href="{% url "tests_app:test_list" %}">Все испытания</a>
                     </li>
                     {% for type in type_tests %}
-                        <li {% if type_test.pk == type.pk %}class="search-label-icon"{% endif %}>
+                        <li {% if type_test.pk == type.pk %}class="selected"{% endif %}>
                             <a href="{{ type.get_absolute_url }}">{{ type.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
             <aside class="col-md-5">
-                <div class="bg-sucess p-3 mb-3 rounded">
+                <div class="p-3 mb-3 rounded">
                     <h1>{% if test_type %}{{ test_type.name }}{% else %}Список испытаний{% endif %}</h1>
                     {% for test in tests %}
-                        <li><a href="{{ test_app.get_absolute_url }}">{{ test.name }}</a> {{ test.price }} &#8381</li>
+                        <li><a href="{{ test.get_absolute_url }}">{{ test.name }}</a> {{ test.price }} &#8381</li>
                     {% endfor %}
                 </div>
             </aside>

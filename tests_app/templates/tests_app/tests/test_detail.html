@@ -1,0 +1,12 @@
+{% extends "tests_app/base.html" %}
+{% load static %}
+{% block title %}
+    {% if type_test %}{{ type_test.name }}{% else %}Испытание{% endif %}
+{% endblock %}
+{% block content %}
+    <div class="detail">
+        <h1>{{ test.name }}</h1>
+        <h2><a href="{{ test.type_test.get_absolute_url }}">{{ test.type_test }}</a></h2>
+        <p class="price">&#8381{{ test.price }}</p>
+    </div>
+{% endblock %}
