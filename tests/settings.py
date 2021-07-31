@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tests_app.apps.TestsAppConfig',
     'cables.apps.CablesConfig',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+CART_SESSION_ID = 'cart'
