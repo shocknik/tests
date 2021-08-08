@@ -9,7 +9,7 @@ from .forms import CartAddProductForm
 def cart_add(request, test_id):
     cart = Cart(request)
     test = get_object_or_404(Test, id=test_id)
-    form = CartAddProductForm(require_POST)
+    form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(test=test,

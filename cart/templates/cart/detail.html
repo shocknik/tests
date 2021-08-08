@@ -8,23 +8,30 @@
     <table class="cart">
         <thead>
         <tr>
-            <th>type_test</th>
-            <th>name</th>
-            <th>price</th>
-            <th>base_unit</th>
+            <th>Количество</th>
+            <th>Категория испытания</th>
+            <th>Наименование испытания</th>
+            <th>Стоимость</th>
+            <th>Базовая единица</th>
         </tr>
         </thead>
         <tbody>
         {% for item in cart %}
-            test. {% with test=item.test %}
-            <tr>
-                <td>test.type_test</td>
-                <td>test.name</td>
-                <td>test.price</td>
-                <td>test.base_unit</td>
-            </tr>
-        {% endwith %}
+            {% with test=item.test %}
+                <tr>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ test.type_test }}</td>
+                    <td>{{ test.name }}</td>
+                    <td>{{ test.price }}</td>
+                    <td>{{ test.base_unit }}</td>
+                </tr>
+            {% endwith %}
         {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">{{ cart.get_total_price }}</td>
+        </tr>
         </tbody>
     </table>
     <p class="text-right">
