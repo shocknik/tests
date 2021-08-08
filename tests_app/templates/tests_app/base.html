@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Главная</a>
+                    <a class="nav-link active" aria-current="page" href="/tests_app">Главная</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/test_list"><font style="vertical-align: inherit;"><font
@@ -29,6 +29,21 @@
         </div>
     </div>
 </nav>
+<div id="subheader">
+    <div class="cart">
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+                Your cart:
+                <a href="{% url "cart:cart_detail" %}">
+                    Количество позиций: {{ total_items }},<br>
+                </a>
+                Общая сумма заказа: {{ cart.get_total_price }} &#8381
+            {% else %}
+                Заказ испытаний пуст.
+            {% endif %}
+        {% endwith %}
+    </div>
+</div>
 </div>
 <div id="content">
     {% block content %}
