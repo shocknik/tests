@@ -8,5 +8,10 @@
         <h1>{{ test.name }}</h1>
         <h2><a href="{{ test.type_test.get_absolute_url }}">{{ test.type_test }}</a></h2>
         <p class="price">{{ test.price }} &#8381</p>
+        <form action="{% url "cart:cart_add" test.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            <input type="submit" value="Add to cart">
+        </form>
     </div>
 {% endblock %}

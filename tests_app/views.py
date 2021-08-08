@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Test, TestType
+from cart.forms import CartAddProductForm
 
 def f_list(request):
     type_test = None
@@ -18,6 +19,7 @@ def f_list(request):
 def test_detail(request, pk):
     test = get_object_or_404(Test,
                              pk=pk)
+    cart_product_form = CartAddProductForm()
     return render(request,
                   'tests_app/tests/test_detail.html',
-                  {'test': test})
+                  {'test': test, 'cart_product_form': cart_product_form})
