@@ -1,0 +1,24 @@
+{% extends "tests_app/base.html" %}
+
+{% block title %}Оформить{% endblock %}
+
+{% block content %}
+    <h1>Оформление</h1>
+    <div class="order-info">
+        <h3>Заявка от {{ cart.update }}</h3>
+        <ul>
+            {% for item in cart %}
+                <li>
+                    {{ item.quantity }}x {{ item.test.name }}
+                    <span>{{ item.total_price }} &#8381</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Итог: {{ cart.get_total_price }} &#8381</p>
+    </div>
+    <form action="." method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input type="submit" value="Place order"></p>
+        {% csrf_token %}
+    </form>
+{% endblock %}

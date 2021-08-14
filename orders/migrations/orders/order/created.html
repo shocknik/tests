@@ -1,0 +1,8 @@
+{% extends "tests_app/base.html" %}
+
+{% block title %}Готово{% endblock %}
+
+{% block content %}
+    <h1>Заявка оформлена</h1>
+    <p>Заявка была успешна оформлена. Номер заявки <strong>{{ order.id }}</strong>>.</p>
+{% endblock %}
