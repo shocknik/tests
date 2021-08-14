@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Оформление</h1>
     <div class="order-info">
-        <h3>Заявка от {{ cart.update }}</h3>
+        <h3>Перечень испытаний в заявке {{ cart.update }}</h3>
         <ul>
             {% for item in cart %}
                 <li>
@@ -16,7 +16,7 @@
         </ul>
         <p>Итог: {{ cart.get_total_price }} &#8381</p>
     </div>
-    <form action="." method="post" class="order-form">
+    <form action="" method="post" class="order-form">
         {{ form.as_p }}
         <p><input type="submit" value="Place order"></p>
         {% csrf_token %}
