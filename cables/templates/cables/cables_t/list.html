@@ -13,12 +13,18 @@
                         <a href="{% url "cables:cab_list" %}">Список типов КИ</a>
                     </li>
                     {% for cat in categories %}
-                        <li {% if category.pk == cat.pk %}class="selected"{% endif %}>
+                        <li {% if category.id == cat.id %}class="selected"{% endif %}>
                             <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
+            <div id="content-main" class="product-list">
+                <h1>{% if category %}{{ category.name }}{% else %}Кабели{% endif %}</h1>
+                {% for cab in cables %}
+                    <a href="{{ cab.get_absolute_url }}">{{ cab.mark }}x{{ cab.count_elem }}x{{ cab.elem_group_count }}x{{ cab.size_elem }}</a>
+                    </div>
+                {% endfor %}
         </div>
     </main>
 {% endblock %}

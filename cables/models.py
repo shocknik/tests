@@ -15,7 +15,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('cables:cab_by_category', kwargs={'pk': self.pk})
+        return reverse('cables:cab_by_category', kwargs={'id': self.id})
 
 
 
@@ -32,6 +32,8 @@ class Cable(models.Model):
         verbose_name = 'Кабель'
         verbose_name_plural = 'Кабели'
 
-
     def __str__(self):
         return self.mark
+
+    def get_absolute_url(self):
+        return reverse('cables:cable_detail', args=[self.id])

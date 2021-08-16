@@ -1,0 +1,12 @@
+{% extends "tests_app/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Cable{% endif %}
+{% endblock %}
+{% block content %}
+    <div class="product-detail">
+        <h1>{{ cable.mark }}</h1>
+        <h2><a href="{{ cable.category.get_absolute_url }}">{{ cable.category }}</a></h2>
+        <p>{{ cable.mark }}x{{ cable.count_elem }}x{{ cable.elem_group_count }}x{{ cable.size_elem }}</p>
+    </div>
+{% endblock %}
